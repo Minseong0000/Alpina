@@ -1,0 +1,129 @@
+@charset 'utf-8';
+
+/* *** css 변수 *** */
+/* 전역 변수 */
+:root {
+  /* 선언(설정) */
+
+  /* fonts */
+  --font-ko: 'Pretendard', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
+  --font-en: 'Open Sans', -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
+
+
+  /* colors */
+  --color-gray-10: #FAFAFA;
+  --color-gray-20: #9F9F9F;
+  --color-gray-30: #777777;
+  --color-gray-40: #EEEDED;
+  --color-lightblue: #EDF2F3;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-red: #FF6565;
+  --color-pink: #FF64F9;
+  --color-purple: #6B5FFF;
+  --color-blue: #4D8AFF;
+  --color-green: #5BFF89;
+  --color-yellow: #FFEE55;
+  --color-orange: #FF6D1B;
+
+  /* font-size */
+  --font-xxl: 44px;
+  --font-xl: 24px;
+  --font-lg: 20px;
+  --font-md: 16px;
+  --font-sm: 14px;
+  --font-xs: 12px;
+}
+
+/* 부드러운 스크롤 */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-en);
+}
+
+.flex-wrap {
+  display: flex;
+}
+
+.sub-title {
+  font-size: var(--font-xs);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.title {
+  font-size: var(--font-xl);
+  font-weight: 300;
+}
+
+.des {
+  font-size: var(--font-sm);
+  font-weight: 400;
+}
+
+.btn {
+  font-size: var(--font-xs);
+  font-weight: 700;
+  border: 1px solid transparent;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 25px;
+}
+
+.line {
+  display: block;
+  background-color: #000;
+  width: 1px;
+  height: 30px;
+  margin: 20px 0;
+  margin-left: 50%;
+}
+
+section {
+  position: relative;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-size: cover;
+}
+
+.content-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.date {
+  color: var(--color-red);
+}
+
+.information {
+  width: 280px;
+  height: 109px;
+  background-color: #ddd;
+  margin: 15px auto;
+  position: relative;
+}
+
+.plus-btn {
+  background-color: var(--color-white);
+  display: block;
+  width: 24px;
+  height: .5px;
+  position: absolute;
+  right: 20px;
+  bottom: 28px;
+}
+
+.plus-btn::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: .5px;
+  background-color: var(--color-white);
+  transform: rotate(90deg);
+}
