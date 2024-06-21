@@ -1,0 +1,133 @@
+@charset 'utf-8';
+
+body {
+  font-family: var(--font-en);
+}
+
+.header-wrap {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
+
+.header-wrap h1 a .logo {
+  width: 87px;
+  height: 61px;
+  padding: 16px 0 0 10px;
+}
+
+.header-wrap h1 a .logo path {
+  /* fill: var(--color-white); */
+}
+
+.header-wrap nav {
+  width: 20px;
+  height: 12px;
+  position: relative;
+  margin-right: 20px;
+}
+
+.header-wrap nav .hamburger-menu::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: .5px;
+  /* background-color: var(--color-white); */
+  background: #000;
+  position: absolute;
+  top: 6px;
+}
+
+.header-wrap nav .hamburger-menu {
+  display: block;
+  width: 20px;
+  height: .5px;
+  /* background-color: var(--color-white); */
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header-wrap nav .hamburger-menu::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: .5px;
+  /* background-color: var(--color-white); */
+  background: #000;
+  position: absolute;
+  top: 12px;
+}
+
+/* header */
+
+.brand-story {
+  color: var(--color-white);
+  background-color: #282828;
+  background-image: url(./assets/images/bg.png);
+  /* background-position: 100vh 100vh; */
+  /*   background-repeat: no-repeat;
+  object-fit: cover;
+  background-size: cover; */
+  /* opacity: 0; */
+}
+
+
+/* global */
+.flex-wrap {
+  display: flex;
+}
+
+.sub-title {
+  font-size: var(--font-xs);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.title {
+  font-size: var(--font-xl);
+  font-weight: 300;
+}
+
+.des {
+  font-size: var(--font-sm);
+  font-weight: 400;
+}
+
+.btn {
+  font-size: var(--font-xs);
+  font-weight: 700;
+  border: 1px solid transparent;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 25px;
+}
+
+.line {
+  display: block;
+  background-color: #000;
+  width: 1px;
+  height: 30px;
+  margin: 20px 0;
+  margin-left: 50%;
+}
+
+section {
+  /* position: relative; */
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-size: cover;
+}
+
+/* .content-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */

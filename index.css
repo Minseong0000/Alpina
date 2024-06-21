@@ -66,9 +66,8 @@ header h1 a {}
 
 section {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   text-align: center;
-  /* margin-top: 50%; */
 }
 
 .brand-story {
@@ -218,6 +217,8 @@ section {
 .menu-story .experience {
   background-image: url(./assets/images/story1.png);
   margin-top: 25px;
+  width: 90%;
+  height: 12vh;
 }
 
 .menu-story .one {
@@ -263,6 +264,12 @@ section {
   background-position: center;
 }
 
+.more .line {
+  transform: rotate(90deg);
+  margin: 10px 0;
+  margin-left: 50%;
+}
+
 .more .des {
   font-weight: 300;
 }
@@ -283,11 +290,79 @@ section {
   background-image: url(./assets/images/bg5.png);
 }
 
+.reservation .content-wrap {
+  width: 100%;
+}
+
 .reservation .line {
   background-color: var(--color-white);
+  transform: rotate(90deg);
+  margin: 10px 0 0 0;
+  margin-left: 50%;
 }
 
 .reservation p {
+  color: #fff;
   font-size: 12px;
+  font-weight: 100;
+}
+
+.reservation p:last-of-type {
+  margin-bottom: 10px;
+}
+
+.reservation .title {
+  margin-top: 20px;
+}
+
+.reservation .book {
+  width: 80%;
+  margin: auto;
+}
+
+.reservation .book input {
+  margin-bottom: 13px;
+}
+
+.reservation .book input:last-child {
+  padding-bottom: 70px;
+}
+
+.reservation .btn {
+  color: #282828;
+  background-color: var(--color-white);
+  border: 1px solid #282828;
+}
+
+/* reservation */
+.footer-wrap {
+  justify-content: center;
+  font-size: var(--font-xs);
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.footer-wrap p:first-child {
+  margin-right: 50px;
+  color: #fff;
   font-weight: 300;
+}
+
+.footer-wrap p:last-child {
+  color: #BAA386;
+  font-weight: 300;
+}
+
+.footer-wrap p:first-child::after {
+  content: "";
+  width: 1px;
+  height: 13px;
+  display: block;
+  background-color: #000;
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  left: 50%;
 }

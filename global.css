@@ -102,8 +102,10 @@ section {
 }
 
 .information {
-  width: 280px;
-  height: 109px;
+  /*   width: 280px;
+  height: 109px; */
+  width: 90%;
+  height: 12vh;
   background-color: #ddd;
   margin: 15px auto;
   position: relative;
@@ -126,4 +128,11 @@ section {
   height: .5px;
   background-color: var(--color-white);
   transform: rotate(90deg);
+}
+
+.book input {
+  font-size: var(--font-sm);
+  padding: 10px 20px;
+  border: 1px soild #000;
+  width: 100%;
 }
