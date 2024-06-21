@@ -38,6 +38,10 @@
 /* 부드러운 스크롤 */
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -57,7 +61,7 @@ body {
   padding-top: 25%;
   opacity: 0;
   pointer-events: none;
-  transition: 1s;
+  /* transition: 1s; */
 }
 
 .site-menu .gnb {
@@ -79,6 +83,7 @@ body {
 .site-menu.reveal {
   opacity: 1;
   pointer-events: all;
+  transition: 1s;
 }
 
 /* menu */
@@ -148,13 +153,21 @@ body {
 
 /* header */
 
-.pop-up-layer {
+/* .pop-up-layer {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
   background-color: #282828;
+} */
+section {
+  height: 100vh;
+  /*   display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em; */
+  transition: transform 0.5s ease;
 }
 
 .brand-story {
@@ -162,12 +175,11 @@ body {
   background-color: #282828;
   background-image: url(./assets/images/bg.png);
   position: relative;
-  /* background-position: 100vh 100vh; */
-  /*   background-repeat: no-repeat;
-  object-fit: cover;
-  background-size: cover; */
-  /* opacity: 0; */
+}
 
+.layer {
+  background-blend-mode: color;
+  transition: 1s;
 }
 
 .brand-story .content-wrap {
@@ -322,7 +334,7 @@ body {
   width: 100%;
   height: 100%;
   margin-top: 40px;
-  margin-left: 10%;
+  padding-left: 10%;
 }
 
 .swiper-slide {
@@ -333,6 +345,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 70%;
+  /* overflow: hidden; */
 }
 
 .swiper-slide img {
@@ -340,6 +353,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
 }
 
 /* schedule */
