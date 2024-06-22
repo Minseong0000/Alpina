@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const sections = document.querySelectorAll("section");
   let currentSectionIndex = 0;
   let isScrolling = false;
+  console.log(window.innerWidth);
 
   function scrollToSection(index) {
     if (index >= 0 && index < sections.length) {
@@ -96,7 +97,7 @@ gsap.utils.toArray(".rolled-over-txt").forEach((txt) => {
   gsap
     .timeline({
       scrollTrigger: {
-        trigger: txt,
+        trigger: ".about",
         start: "100% 100%",
         end: "100% 100%",
         scrub: 1,
@@ -116,3 +117,31 @@ gsap.utils.toArray(".rolled-over-txt").forEach((txt) => {
       }
     );
 });
+
+// 예약페이지 문구
+function updatePlaceholders() {
+  const inputs = document.querySelectorAll(".reserve");
+  inputs.forEach((input) => {
+    if (window.innerWidth >= 1280) {
+      input.placeholder = "";
+    } else {
+      // 초기 placeholder 값을 저장하고 다시 설정
+      input.placeholder = input.getAttribute("data-placeholder");
+    }
+  });
+}
+
+// 초기 실행
+document.querySelectorAll(".reserve").forEach((input) => {
+  // placeholder 초기 값을 data-placeholder에 저장
+  input.setAttribute("data-placeholder", input.placeholder);
+});
+updatePlaceholders();
+
+// 윈도우 크기 변경시 실행
+window.addEventListener("resize", updatePlaceholders);
+
+// 높이값 확인
+var section = document.querySelector(".menu-story");
+var sectionHeight = section.offsetHeight;
+console.log(sectionHeight);

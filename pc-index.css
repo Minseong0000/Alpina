@@ -1,0 +1,192 @@
+@charset 'utf-8';
+@media (width >=600px) {
+  .swiper-slide {
+    width: 60%;
+  }
+}
+
+@media (width >=650px) {
+  .swiper-slide {
+    width: 50%;
+  }
+}
+
+@media (width >=800px) {
+  .swiper-slide {
+    width: 40%;
+  }
+}
+
+@media (width >=1050px) {
+  .swiper-slide {
+    width: 35%;
+  }
+}
+
+@media (width >=1280px) {
+  .header-wrap h1 a .logo {
+    width: 147px;
+    height: 103px;
+    padding: 33px 0 0 33px;
+  }
+
+  .title {
+    font-size: var(--font-xxl);
+  }
+
+  .sub-title {
+    font-size: var(--font-sm);
+  }
+
+  .des {
+    font-size: 18px;
+  }
+
+  .btn {
+    font-size: var(--font-sm);
+  }
+
+  .header-wrap nav .hamburger-menu i {
+    width: 30px;
+    margin-top: 8px;
+  }
+
+  /* header & global */
+  main>.flex-wrap {
+    flex-direction: row;
+  }
+
+  .about {
+    width: 30%;
+  }
+
+  .schedule {
+    width: 70%;
+  }
+
+  /* schedule */
+  .menu-story .flex-wrap {
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+  }
+
+  .information {
+    height: 433px;
+    margin: 10px;
+  }
+
+  .menu-story .title {
+    margin-bottom: 60px;
+  }
+
+  /* menustory */
+  .menu {
+    color: var(--color-black);
+    background-size: 50% 100%;
+  }
+
+  .menu .content-wrap {
+    margin-left: 62.5%;
+    text-align: left;
+  }
+
+  .menu .des {
+    width: 50%;
+  }
+
+  /* menu */
+  .more {
+    background-position: 30% -20%;
+    background-size: 30%;
+  }
+
+  .more .content-wrap {
+    display: flex;
+  }
+
+  .more .text-wrap,
+  .more .food {
+    width: 50%;
+  }
+
+  /* more */
+  .reservation .content-wrap {
+    /*   
+    text-align-last: left;
+    */
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .reservation .sub-title {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+  }
+
+  .reservation .title {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+  }
+
+  .reservation .line {
+    margin-left: 12%;
+  }
+
+  .reservation p {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+
+  .reservation p span {
+    display: contents;
+  }
+
+  .reservation .book {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .reservation .book p {
+    margin-bottom: 0;
+    margin-left: 0;
+    text-wrap: nowrap;
+  }
+
+
+  .reservation .book .container {
+    width: calc(33.33% - 11.33px)
+      /* margin: 10px; */
+  }
+
+  .reservation .book .container .reserve {
+    padding: 5px;
+  }
+
+  .reservation .book .container:nth-of-type(2) {
+    margin-left: 17px;
+    margin-right: 17px;
+  }
+
+  .reservation .book p {
+    display: block;
+  }
+
+  .reservation .book input:last-child {
+    width: 100%;
+  }
+
+  .reservation .book>p {
+    margin-top: 20px;
+  }
+
+  .reservation .btn-wrap {
+    width: 80%;
+    margin: auto;
+    text-align: right;
+  }
+}
