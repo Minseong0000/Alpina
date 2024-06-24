@@ -302,6 +302,7 @@ main>.flex-wrap {
   align-items: center;
   width: 70%;
   /* overflow: hidden; */
+  position: relative;
 }
 
 .swiper-slide img {
@@ -312,11 +313,20 @@ main>.flex-wrap {
 
 }
 
+.swiper-slide p {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  color: var(--color-white);
+  font-size: var(--font-sm);
+  font-weight: 700;
+}
+
 /* schedule */
 
 .menu-story .content-wrap {
   padding-top: 100px;
-  /* width: 80%; */
+  width: 80%;
   margin: auto;
   padding-bottom: 93px;
 }
@@ -357,7 +367,7 @@ main>.flex-wrap {
 
 .menu {
   color: var(--color-white);
-  background-image: url(./assets/images/bg3.png);
+  background-image: url(./assets/images/bg7.jpg);
 }
 
 .menu .content-wrap {
@@ -422,7 +432,7 @@ main>.flex-wrap {
 /* more */
 .reservation {
   color: var(--color-white);
-  background-image: url(./assets/images/bg5.png);
+  background-image: url(./assets/images/bg10.png);
 }
 
 .reservation .content-wrap {

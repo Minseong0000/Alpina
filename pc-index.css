@@ -3,11 +3,29 @@
   .swiper-slide {
     width: 60%;
   }
+
 }
 
 @media (width >=650px) {
   .swiper-slide {
     width: 50%;
+  }
+
+  .menu-story .experience {
+    background-image: url(./assets/images/story4.png);
+  }
+
+  .menu-story .one {
+    background-image: url(./assets/images/story5.png);
+  }
+
+  .menu-story .two {
+    background-image: url(./assets/images/story6.png);
+    margin-bottom: 133px;
+  }
+
+  .information {
+    height: 20vh;
   }
 }
 
@@ -15,11 +33,30 @@
   .swiper-slide {
     width: 40%;
   }
+
+  .brand-story {
+    background-image: url(./assets/images/bg6.png);
+  }
+
+
 }
 
 @media (width >=1050px) {
   .swiper-slide {
     width: 35%;
+  }
+
+  .menu-story .experience {
+    background-image: url(./assets/images/story7.png);
+  }
+
+  .menu-story .one {
+    background-image: url(./assets/images/story8.png);
+  }
+
+  .menu-story .two {
+    background-image: url(./assets/images/story9.png);
+    margin-bottom: 133px;
   }
 }
 
@@ -76,6 +113,19 @@
     margin: 10px;
   }
 
+  .menu-story .experience {
+    background-image: url(./assets/images/story10.png);
+  }
+
+  .menu-story .one {
+    background-image: url(./assets/images/story11.png);
+  }
+
+  .menu-story .two {
+    background-image: url(./assets/images/story12.png);
+    margin-bottom: 133px;
+  }
+
   .menu-story .title {
     margin-bottom: 60px;
   }
@@ -83,11 +133,26 @@
   /* menustory */
   .menu {
     color: var(--color-black);
-    background-size: 50% 100%;
+    display: flex;
+    background-image: none;
+  }
+
+  .menu .content-wrap,
+  .menu .bg-wrap {
+    width: 50%;
+  }
+
+  .menu .bg-wrap {
+    background-image: url(./assets/images/bg8.png);
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
   }
 
   .menu .content-wrap {
-    margin-left: 62.5%;
+    /* position: absolute; */
+    padding-left: 12.5%;
     text-align: left;
   }
 
@@ -111,6 +176,10 @@
   }
 
   /* more */
+  .reservation {
+    background-image: url(./assets/images/bg9.png);
+  }
+
   .reservation .content-wrap {
     /*   
     text-align-last: left;

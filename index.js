@@ -1,5 +1,5 @@
 // 페이지 전환
-document.addEventListener("DOMContentLoaded", function () {
+/* document.addEventListener("DOMContentLoaded", function () {
   const sections = document.querySelectorAll("section");
   let currentSectionIndex = 0;
   let isScrolling = false;
@@ -62,6 +62,99 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 100);
 
   window.addEventListener("keydown", handleKeyDown);
+}); */
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll("section");
+  let currentSectionIndex = 0;
+  let isScrolling = false;
+  let startY = 0;
+
+  function scrollToSection(index) {
+    if (index >= 0 && index < sections.length) {
+      sections[index].scrollIntoView({ behavior: "smooth" });
+      currentSectionIndex = index;
+    }
+  }
+
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  const handleScroll = debounce((event) => {
+    if (isScrolling) return;
+    isScrolling = true;
+
+    if (event.deltaY > 0) {
+      // Scrolling down
+      if (currentSectionIndex < sections.length - 1) {
+        scrollToSection(currentSectionIndex + 1);
+      }
+    } else {
+      // Scrolling up
+      if (currentSectionIndex > 0) {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    }
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1000);
+  }, 100);
+
+  window.addEventListener("wheel", handleScroll);
+
+  const handleKeyDown = debounce((event) => {
+    if (event.key === "ArrowDown") {
+      // Arrow down key
+      if (currentSectionIndex < sections.length - 1) {
+        scrollToSection(currentSectionIndex + 1);
+      }
+    } else if (event.key === "ArrowUp") {
+      // Arrow up key
+      if (currentSectionIndex > 0) {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    }
+  }, 100);
+
+  window.addEventListener("keydown", handleKeyDown);
+
+  const handleTouchStart = (event) => {
+    startY = event.touches[0].clientY;
+  };
+
+  const handleTouchMove = debounce((event) => {
+    if (isScrolling) return;
+    const endY = event.touches[0].clientY;
+    const deltaY = startY - endY;
+
+    if (deltaY > 50) {
+      // Swiping up
+      if (currentSectionIndex < sections.length - 1) {
+        scrollToSection(currentSectionIndex + 1);
+      }
+    } else if (deltaY < -50) {
+      // Swiping down
+      if (currentSectionIndex > 0) {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    }
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1000);
+  }, 100);
+
+  window.addEventListener("touchstart", handleTouchStart);
+  window.addEventListener("touchmove", handleTouchMove);
 });
 
 var swiper = new Swiper(".mySwiper", {

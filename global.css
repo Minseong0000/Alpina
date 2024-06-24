@@ -107,9 +107,9 @@ section {
 
 .information {
   /* width: 280px; */
-  height: 126px;
-  width: 90%;
-  /* height: 12vh; */
+  /* height: 126px; */
+  width: 100%;
+  height: 15vh;
   background-color: #ddd;
   margin: 15px auto;
   position: relative;
