@@ -1,68 +1,4 @@
 // 페이지 전환
-/* document.addEventListener("DOMContentLoaded", function () {
-  const sections = document.querySelectorAll("section");
-  let currentSectionIndex = 0;
-  let isScrolling = false;
-  console.log(window.innerWidth);
-
-  function scrollToSection(index) {
-    if (index >= 0 && index < sections.length) {
-      sections[index].scrollIntoView({ behavior: "smooth" });
-      currentSectionIndex = index;
-    }
-  }
-
-  function debounce(func, wait) {
-    let timeout;
-    return function (...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
-
-  const handleScroll = debounce((event) => {
-    if (isScrolling) return;
-    isScrolling = true;
-
-    if (event.deltaY > 0) {
-      // Scrolling down
-      if (currentSectionIndex < sections.length - 1) {
-        scrollToSection(currentSectionIndex + 1);
-      }
-    } else {
-      // Scrolling up
-      if (currentSectionIndex > 0) {
-        scrollToSection(currentSectionIndex - 1);
-      }
-    }
-
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000);
-  }, 100);
-
-  window.addEventListener("wheel", handleScroll);
-
-  const handleKeyDown = debounce((event) => {
-    if (event.key === "ArrowDown") {
-      // Arrow down key
-      if (currentSectionIndex < sections.length - 1) {
-        scrollToSection(currentSectionIndex + 1);
-      }
-    } else if (event.key === "ArrowUp") {
-      // Arrow up key
-      if (currentSectionIndex > 0) {
-        scrollToSection(currentSectionIndex - 1);
-      }
-    }
-  }, 100);
-
-  window.addEventListener("keydown", handleKeyDown);
-}); */
 document.addEventListener("DOMContentLoaded", function () {
   const sections = document.querySelectorAll("section");
   let currentSectionIndex = 0;
@@ -235,6 +171,33 @@ updatePlaceholders();
 window.addEventListener("resize", updatePlaceholders);
 
 // 높이값 확인
-var section = document.querySelector(".menu-story");
+/* var section = document.querySelector(".menu-story");
 var sectionHeight = section.offsetHeight;
-console.log(sectionHeight);
+console.log(sectionHeight); */
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  const sections = document.querySelectorAll("section");
+  const headerElement = document.querySelector(".header-wrap");
+
+  const observerOptions = {
+    root: null, // viewport를 root로 사용
+    rootMargin: "0px",
+    threshold: 0.5, // 섹션의 50%가 보이면 콜백 실행
+  };
+
+  const observerCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = Array.from(sections).indexOf(entry.target);
+        if (index === 0 || index === sections.length - 1) {
+          headerElement.classList.remove("highlight");
+        } else {
+          headerElement.classList.add("highlight");
+        }
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  sections.forEach((section) => observer.observe(section));
+});

@@ -65,6 +65,10 @@ body {
   font-weight: 400;
 }
 
+.btn-container {
+  margin-top: 25px;
+}
+
 .btn {
   font-size: var(--font-xs);
   font-weight: 700;
@@ -72,7 +76,6 @@ body {
   background-color: #000;
   color: #fff;
   padding: 10px 20px;
-  margin-top: 25px;
 }
 
 .line {
@@ -116,6 +119,11 @@ section {
   background-repeat: no-repeat;
   object-fit: cover;
   background-size: cover;
+  transition: 1s;
+}
+
+.information .des {
+  transition: 1s;
 }
 
 .plus-btn {
@@ -126,6 +134,7 @@ section {
   position: absolute;
   right: 20px;
   bottom: 28px;
+  transition: 1s;
 }
 
 .plus-btn::after {

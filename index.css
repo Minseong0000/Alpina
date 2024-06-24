@@ -59,8 +59,12 @@
 .header-wrap h1 a .logo path {
   width: 100%;
   height: 100%;
-  /* fill: var(--color-white); */
+  fill: var(--color-white);
   object-fit: contain;
+}
+
+.header-wrap.highlight h1 a .logo path {
+  fill: var(--color-black);
 }
 
 .header-wrap nav {
@@ -77,11 +81,15 @@
 
 
 .header-wrap nav .hamburger-menu i {
-  background-color: #000;
+  background-color: var(--color-white);
   width: 24px;
   height: 1px;
   margin-top: 6px;
   display: block;
+}
+
+.header-wrap.highlight nav .hamburger-menu i {
+  background-color: var(--color-black);
 }
 
 .header-wrap nav .hamburger-menu i:nth-child(1) {
@@ -158,15 +166,18 @@ section {
 .brand-story .des {
   opacity: 0;
   animation: fadeup 1s cubic-bezier(.28, .06, .36, .86) 1.5s forwards;
-  ;
 }
 
-.brand-story .btn {
+.brand-story .btn-container {
+  margin-bottom: 323px;
+  animation: fadeup 1.2s cubic-bezier(.28, .06, .36, .86) 1.7s forwards;
+  opacity: 0;
+
+}
+
+.brand-story #button-1 {
   background-color: var(--color-white);
   color: #282828;
-  margin-bottom: 323px;
-  opacity: 0;
-  animation: fadeup 1.2s cubic-bezier(.28, .06, .36, .86) 1.7s forwards;
 }
 
 .brand-story .quick-wrap {
@@ -242,6 +253,7 @@ main>.flex-wrap {
 
 /* about */
 .schedule .content-wrap {
+  /* padding-top: 37%; */
   padding-top: 182px;
   margin: auto;
   text-align: left;
@@ -280,9 +292,11 @@ main>.flex-wrap {
   width: 60%;
 }
 
-.schedule .btn {
+.schedule .btn-container {
   display: block;
   margin: 45px auto;
+  text-align: right;
+  margin-right: 40px;
 }
 
 /* swiper start */
@@ -375,7 +389,7 @@ main>.flex-wrap {
   padding-bottom: 43px;
 }
 
-.menu .btn {
+.menu .btn-container {
   margin-bottom: 245px;
 }
 

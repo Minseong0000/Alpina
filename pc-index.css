@@ -1,9 +1,24 @@
 @charset 'utf-8';
+@media (height <=800px) {
+  .schedule .content-wrap {
+    padding-top: 10%;
+  }
+}
+
+@media (height <=700px) {
+  .schedule .content-wrap {
+    padding-top: 5%;
+  }
+}
+
 @media (width >=600px) {
   .swiper-slide {
     width: 60%;
   }
 
+  .site-menu {
+    padding-top: 20%;
+  }
 }
 
 @media (width >=650px) {
@@ -27,6 +42,40 @@
   .information {
     height: 20vh;
   }
+
+  .brand-story #button-1 {
+    background-color: transparent;
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+  }
+
+  .schedule .btn {
+    background-color: transparent;
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+  }
+
+  .menu .btn {
+    background-color: transparent;
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+  }
+
+  .more .btn {
+    background-color: transparent;
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+  }
+
+  .reservation .btn {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+  }
+
+  .site-menu {
+    padding-top: 18%;
+  }
 }
 
 @media (width >=800px) {
@@ -38,6 +87,9 @@
     background-image: url(./assets/images/bg6.png);
   }
 
+  .site-menu {
+    padding-top: 15%;
+  }
 
 }
 
@@ -58,9 +110,17 @@
     background-image: url(./assets/images/story9.png);
     margin-bottom: 133px;
   }
+
+  .site-menu {
+    padding-top: 13%;
+  }
 }
 
 @media (width >=1280px) {
+  .site-menu {
+    padding-top: 10%;
+  }
+
   .header-wrap h1 a .logo {
     width: 147px;
     height: 103px;
@@ -89,6 +149,37 @@
   }
 
   /* header & global */
+  .brand-story #button-1 {
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    position: relative;
+  }
+
+  #button-1:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background-color: var(--color-white);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #button-1:hover {
+    color: var(--color-black);
+  }
+
+  #button-1:hover:before {
+    left: 0;
+  }
+
   main>.flex-wrap {
     flex-direction: row;
   }
@@ -99,6 +190,37 @@
 
   .schedule {
     width: 70%;
+  }
+
+  .schedule #button-2 {
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    position: relative;
+  }
+
+  .schedule #button-2:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background-color: var(--color-black);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .schedule #button-2:hover {
+    color: var(--color-white);
+  }
+
+  .schedule #button-2:hover:before {
+    left: 0;
   }
 
   /* schedule */
@@ -113,17 +235,44 @@
     margin: 10px;
   }
 
+  .plus-btn {
+    display: none;
+  }
+
+  .information:hover .des {
+    transform: translateY(-50px);
+  }
+
   .menu-story .experience {
     background-image: url(./assets/images/story10.png);
+    opacity: 0.8;
+  }
+
+  .menu-story .experience:hover {
+    opacity: 1;
+  }
+
+  .menu-story .information:hover .plus-btn {
+    display: block;
   }
 
   .menu-story .one {
     background-image: url(./assets/images/story11.png);
+    opacity: 0.8;
+  }
+
+  .menu-story .one:hover {
+    opacity: 1;
   }
 
   .menu-story .two {
     background-image: url(./assets/images/story12.png);
+    opacity: 0.8;
     margin-bottom: 133px;
+  }
+
+  .menu-story .two:hover {
+    opacity: 1;
   }
 
   .menu-story .title {
@@ -160,6 +309,37 @@
     width: 50%;
   }
 
+  .menu #button-3 {
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    position: relative;
+  }
+
+  .menu #button-3:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background-color: var(--color-black);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menu #button-3:hover {
+    color: var(--color-white);
+  }
+
+  .menu #button-3:hover:before {
+    left: 0;
+  }
+
   /* menu */
   .more {
     background-position: 30% -20%;
@@ -174,6 +354,38 @@
   .more .food {
     width: 50%;
   }
+
+  .more #button-4 {
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    position: relative;
+  }
+
+  .more #button-4:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background-color: var(--color-black);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .more #button-4:hover {
+    color: var(--color-white);
+  }
+
+  .more #button-4:hover:before {
+    left: 0;
+  }
+
 
   /* more */
   .reservation {
@@ -257,5 +469,51 @@
     width: 80%;
     margin: auto;
     text-align: right;
+  }
+
+  .reservation #button-5 {
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reservation .btn#button-5:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background-color: var(--color-white);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .reservation #button-5:hover {
+    color: var(--color-black);
+  }
+
+  .reservation #button-5:hover:before {
+    left: 0;
+  }
+
+  @keyframes close-menu2 {
+    0% {
+      transform: translateY(0) rotate(0);
+    }
+
+    50% {
+      transform: translateY(-7px) rotate(0);
+    }
+
+    100% {
+      transform: translateY(-10.5px) rotate(-45deg);
+    }
   }
 }
