@@ -1,101 +1,102 @@
-// 페이지 전환
+//페이지 전환
 document.addEventListener("DOMContentLoaded", function () {
   const sections = document.querySelectorAll("section");
   let currentSectionIndex = 0;
   let isScrolling = false;
-  let startY = 0;
+  let scrollTimeout;
 
   function scrollToSection(index) {
     if (index >= 0 && index < sections.length) {
       sections[index].scrollIntoView({ behavior: "smooth" });
       currentSectionIndex = index;
+      setIsScrolling();
     }
   }
 
-  function debounce(func, wait) {
-    let timeout;
-    return function (...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+  function setIsScrolling() {
+    isScrolling = true;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, 600); // Shortened the timeout to improve responsiveness
+  }
+
+  function throttle(func, limit) {
+    let lastFunc;
+    let lastRan;
+    return function () {
+      const context = this;
+      const args = arguments;
+      if (!lastRan) {
+        func.apply(context, args);
+        lastRan = Date.now();
+      } else {
+        clearTimeout(lastFunc);
+        lastFunc = setTimeout(function () {
+          if (Date.now() - lastRan >= limit) {
+            func.apply(context, args);
+            lastRan = Date.now();
+          }
+        }, limit - (Date.now() - lastRan));
+      }
     };
   }
 
-  const handleScroll = debounce((event) => {
-    if (isScrolling) return;
-    isScrolling = true;
-
-    if (event.deltaY > 0) {
-      // Scrolling down
-      if (currentSectionIndex < sections.length - 1) {
+  const handleScroll = throttle((event) => {
+    if (!isScrolling) {
+      if (event.deltaY > 0 && currentSectionIndex < sections.length - 1) {
         scrollToSection(currentSectionIndex + 1);
-      }
-    } else {
-      // Scrolling up
-      if (currentSectionIndex > 0) {
+      } else if (event.deltaY < 0 && currentSectionIndex > 0) {
         scrollToSection(currentSectionIndex - 1);
       }
     }
-
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000);
-  }, 100);
+  }, 250); // Increased the throttle limit for wheel events
 
   window.addEventListener("wheel", handleScroll);
 
-  const handleKeyDown = debounce((event) => {
-    if (event.key === "ArrowDown") {
-      // Arrow down key
-      if (currentSectionIndex < sections.length - 1) {
+  const handleKeyDown = throttle((event) => {
+    if (!isScrolling) {
+      if (
+        event.key === "ArrowDown" &&
+        currentSectionIndex < sections.length - 1
+      ) {
         scrollToSection(currentSectionIndex + 1);
-      }
-    } else if (event.key === "ArrowUp") {
-      // Arrow up key
-      if (currentSectionIndex > 0) {
+      } else if (event.key === "ArrowUp" && currentSectionIndex > 0) {
         scrollToSection(currentSectionIndex - 1);
       }
     }
-  }, 100);
+  }, 250); // Consistent throttle timing for key events
 
-  window.addEventListener("keydown", handleKeyDown);
+  let startY = 0;
 
-  const handleTouchStart = (event) => {
+  window.addEventListener("touchstart", (event) => {
     startY = event.touches[0].clientY;
-  };
+  });
 
-  const handleTouchMove = debounce((event) => {
-    if (isScrolling) return;
-    const endY = event.touches[0].clientY;
-    const deltaY = startY - endY;
-
-    if (deltaY > 50) {
-      // Swiping up
-      if (currentSectionIndex < sections.length - 1) {
+  const handleTouchMove = throttle((event) => {
+    if (!isScrolling) {
+      const endY = event.touches[0].clientY;
+      const deltaY = startY - endY;
+      if (deltaY > 50 && currentSectionIndex < sections.length - 1) {
         scrollToSection(currentSectionIndex + 1);
-      }
-    } else if (deltaY < -50) {
-      // Swiping down
-      if (currentSectionIndex > 0) {
+      } else if (deltaY < -50 && currentSectionIndex > 0) {
         scrollToSection(currentSectionIndex - 1);
       }
     }
+  }, 250); // Applied throttle to touch move events
 
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000);
-  }, 100);
-
-  window.addEventListener("touchstart", handleTouchStart);
   window.addEventListener("touchmove", handleTouchMove);
 });
 
 var swiper = new Swiper(".mySwiper", {
   slidesPerView: "auto",
   spaceBetween: 30,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    type: "bullets",
+    // dynamicBullets: true,
+  },
 });
 // swiper
 

@@ -120,6 +120,7 @@ section {
   object-fit: cover;
   background-size: cover;
   transition: 1s;
+  cursor: pointer;
 }
 
 .information .des {
