@@ -8,7 +8,7 @@
 
 작업유형: 개인 프로젝트(기여도 100%)
 
-<img src="./assets/report/Alpina.png" alt="홈페이지 사진">
+<img src="https://minseong0000.github.io/Alpina/assets/report/alpina.png" alt="홈페이지 사진">
 
 ---
 
