@@ -77,6 +77,7 @@
 .header-wrap nav .hamburger-menu {
   position: absolute;
   top: 0;
+  cursor: pointer;
 }
 
 
@@ -225,7 +226,7 @@ main>.flex-wrap {
 }
 
 .about .content-wrap {
-  padding-top: 241px;
+  padding-top: 160px;
 
 }
 
@@ -296,7 +297,7 @@ main>.flex-wrap {
   display: block;
   margin: 45px auto;
   text-align: right;
-  margin-right: 40px;
+  margin-right: 10%;
 }
 
 /* swiper start */
@@ -314,10 +315,12 @@ main>.flex-wrap {
 }
 
 .swiper {
-  width: 100%;
+  width: 80%;
   height: 100%;
   margin-top: 40px;
-  padding-left: 10%;
+  /* padding-left: 10%; */
+  position: relative;
+  overflow: visible;
 }
 
 .swiper-slide {
@@ -335,9 +338,8 @@ main>.flex-wrap {
 .swiper-slide img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 25vh;
   object-fit: cover;
-
 }
 
 .swiper-slide p {
@@ -347,6 +349,40 @@ main>.flex-wrap {
   color: var(--color-white);
   font-size: var(--font-sm);
   font-weight: 700;
+}
+
+.hide-left {
+  position: absolute;
+  top: 0;
+  left: -15%;
+  background-color: #fff;
+  width: 15%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.hide-right {
+  position: absolute;
+  top: 0;
+  right: -15%;
+  width: 15%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 9999;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  position: absolute;
+  visibility: visible;
+  bottom: -10%;
+  /* 위쪽으로 이동 */
+  left: 0;
+  width: 100%;
+  text-align: center;
+
 }
 
 /* schedule */
@@ -423,7 +459,7 @@ main>.flex-wrap {
 }
 
 .more .content-wrap {
-  padding-top: 100px;
+  /* padding-top: 100px; */
   /* padding-bottom: 55px; */
 }
 
@@ -496,7 +532,7 @@ main>.flex-wrap {
   padding-top: 130px;
   padding-bottom: 46px;
   width: 100%;
-  z-index: 999;
+  z-index: 99;
 }
 
 .reservation .line {

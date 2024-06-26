@@ -320,11 +320,6 @@
     transform: translateY(-20px);
   }
 
-  .plus-btn {
-    left: 30px;
-    transition: 1s;
-  }
-
   .menu-story .experience {
     background-image: url(./assets/images/story10.png);
     /* opacity: 0.8; */
@@ -361,11 +356,21 @@
     margin-bottom: 60px;
   }
 
+  .plus-btn {
+    bottom: 72px;
+  }
+
   /* menustory */
   .menu {
     color: var(--color-black);
     display: flex;
     background-image: none;
+  }
+
+  .menu .line {
+    background-color: #000;
+    transform: rotate(-90deg);
+    margin-left: 15px;
   }
 
   .menu .content-wrap,
@@ -561,6 +566,7 @@
   .reservation .book>input {
     padding-left: 5px;
     padding-top: 5px;
+    padding-bottom: 100px;
   }
 
 
@@ -571,6 +577,7 @@
 
   .reservation .book .container .reserve {
     padding: 5px;
+    padding-bottom: 20px;
   }
 
   .reservation .book .container:nth-of-type(2) {
@@ -643,23 +650,44 @@
   }
 }
 
-/* 
-@media (width >=1390px) {
-
-  .schedule h2,
-  .schedule h3,
-  .open,
-  .close {
-    width: 100%;
-  }
-
-  .schedule .content-wrap>p {
-    width: 100%;
-  }
-} */
 @media (width >=1380px) {
-  .schedule .btn-container {
-    margin-right: 0;
+  .more .content-wrap {
+    width: 85%;
+  }
+}
+
+@media (width >=1500px) {
+  .more .content-wrap {
+    width: 90%;
+  }
+
+  .more .food .img:nth-of-type(1) img {
+    width: 90%;
+    transform: translate(-100px, -100px);
+  }
+
+  .more .food .img:nth-of-type(2) img {
+    width: 90%;
+  }
+
+  .more .food .img:nth-of-type(3) img {
+    width: 80%;
+    transform: translate(-60px, -40px);
+  }
+
+  .more .food .img:nth-of-type(4) img {
+    width: 100%;
+  }
+
+  .more .food {
+    padding-left: 0;
+    padding-right: 5%;
+  }
+
+  .more .text-wrap {
+    width: 50%;
+    padding-left: 5%;
+    transform: translate(30px, -20px);
   }
 }
 
@@ -667,4 +695,6 @@
   .about .content-wrap {
     padding-top: 100px;
   }
+
+
 }
