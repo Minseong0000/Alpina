@@ -381,7 +381,7 @@ main>.flex-wrap {
   /* 위쪽으로 이동 */
   left: 0;
   width: 100%;
-  text-align: center;
+  text-align: left;
 
 }
 
