@@ -36,6 +36,8 @@
 
 ### 4. 문제 & 해결
 
+
+
 ---
 
 ### 프로젝트 후기
@@ -46,11 +48,5 @@
 여러가지 스타일(여백, 행간, 등)들이 일관성이 없으면 퍼블리싱을 할 때 어느 부분에서 문제가 되는지,
 그리고 디자인적 시선에서 얼마나 어색한지 배웠다. 
 
-
-
-
-
-
-
-<a href="https://minseong0000.github.io/Alpina/" target="_blank">Alpina restaurant</a>
+<a href="https://minseong0000.github.io/Alpina/" target="_blank">프로젝트 바로가기</a>
 
