@@ -38,11 +38,18 @@
 /* 부드러운 스크롤 */
 html {
   scroll-behavior: smooth;
-  /* overflow: hidden; */
+  overflow: hidden;
+
 }
 
 body {
   font-family: var(--font-en);
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+
 }
 
 .flex-wrap {
