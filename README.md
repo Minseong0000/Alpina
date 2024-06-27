@@ -36,7 +36,162 @@
 
 ### 4. 문제 & 해결
 
+**문제**
 
+페이지 로드시, 이미지와 텍스트가 렉이 걸려서 화면에 표시되지 않는 경우가 많았음.
+
+```
+      
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll("section");
+  let currentSectionIndex = 0;
+  let isScrolling = false;
+  let scrollTimeout;
+
+  function scrollToSection(index) {
+    if (index >= 0 && index < sections.length) {
+      sections[index].scrollIntoView({ behavior: "smooth" });
+      currentSectionIndex = index;
+      setIsScrolling();
+    }
+  }
+
+  function setIsScrolling() {
+    isScrolling = true;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+    }, 500); // Shortened the timeout to 500ms for better responsiveness
+  }
+
+  function throttle(func, limit) {
+    let lastFunc;
+    let lastRan;
+    return function () {
+      const context = this;
+      const args = arguments;
+      if (!lastRan) {
+        func.apply(context, args);
+        lastRan = Date.now();
+      } else {
+        clearTimeout(lastFunc);
+        lastFunc = setTimeout(function () {
+          if (Date.now() - lastRan >= limit) {
+            func.apply(context, args);
+            lastRan = Date.now();
+          }
+        }, limit - (Date.now() - lastRan));
+      }
+    };
+  }
+
+  const handleScroll = throttle((event) => {
+    if (!isScrolling) {
+      if (event.deltaY > 0 && currentSectionIndex < sections.length - 1) {
+        scrollToSection(currentSectionIndex + 1);
+      } else if (event.deltaY < 0 && currentSectionIndex > 0) {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    }
+  }, 150); // Reduced throttle limit to 150ms for wheel events
+
+  window.addEventListener("wheel", handleScroll);
+
+  const handleKeyDown = throttle((event) => {
+    if (!isScrolling) {
+      if (
+        event.key === "ArrowDown" &&
+        currentSectionIndex < sections.length - 1
+      ) {
+        scrollToSection(currentSectionIndex + 1);
+      } else if (event.key === "ArrowUp" && currentSectionIndex > 0) {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    }
+  }, 150); // Consistent throttle timing of 150ms for key events
+
+  let startY = 0;
+
+  window.addEventListener("touchstart", (event) => {
+    startY = event.touches[0].clientY;
+  });
+
+  const handleTouchMove = throttle((event) => {
+    if (!isScrolling) {
+      const endY = event.touches[0].clientY;
+      const deltaY = startY - endY;
+      if (deltaY > 50 && currentSectionIndex < sections.length - 1) {
+        scrollToSection(currentSectionIndex + 1);
+      } else if (deltaY < -50 && currentSectionIndex > 0) {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    }
+  }, 150); // Applied consistent throttle timing of 150ms to touch move events
+
+  window.addEventListener("touchmove", handleTouchMove);
+
+  // IntersectionObserver to load sections dynamically
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // Stop observing once the section is visible
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+});
+
+```
+
+
+**해결**
+
+```
+
+const elSectionList = [...document.querySelectorAll(".section")];
+const elAnchorList = [...document.querySelectorAll(".anchor")];
+const elMap = new Map();
+const tryAddingToElMap = (elAnchor) => {
+  const href = elAnchor.getAttribute("href");
+  const id = href ? href.slice(1) : "";
+  const elSection = elSectionList.find((elSection) => elSection.id === id);
+  if (elSection) elMap.set(elSection, elAnchor);
+};
+const isIntersecting = (entry) => entry.isIntersecting;
+const isNotIntersecting = (entry) => !entry.isIntersecting;
+const activate = (el) => el.classList.add("is-active");
+const activateLinkedAnchor = (entry) => activate(elMap.get(entry.target));
+const deactivate = (el) => el.classList.remove("is-active");
+const deactivateLinkedAnchor = (entry) => deactivate(elMap.get(entry.target));
+const toggleElAnchorActivities = (entries) => {
+  entries.filter(isIntersecting).forEach(activateLinkedAnchor);
+  entries.filter(isNotIntersecting).forEach(deactivateLinkedAnchor);
+};
+const intersectionObserverOptions = {
+  root: document.querySelector(".full-page-scrolling-container") || document,
+  rootMargin: "-50% 0%",
+  threshold: 0,
+};
+const intersectionObserver = new IntersectionObserver(
+  toggleElAnchorActivities,
+  intersectionObserverOptions
+);
+const observeElSection = (elAnchor, elSection) =>
+  intersectionObserver.observe(elSection);
+elAnchorList.forEach(tryAddingToElMap);
+elMap.forEach(observeElSection);
+
+```
 
 ---
 
