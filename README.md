@@ -36,8 +36,12 @@
 
 ### 4. 문제 & 해결
 
+**문제**
+
 페이지 로드시, 이미지와 텍스트가 렉이 걸려서 화면에 표시되지 않는 경우가 많았음.
 
+```
+      
 document.addEventListener("DOMContentLoaded", function () {
   const sections = document.querySelectorAll("section");
   let currentSectionIndex = 0;
@@ -147,7 +151,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-해결
+```
+
+
+**해결**
+
+```
+
 const elSectionList = [...document.querySelectorAll(".section")];
 const elAnchorList = [...document.querySelectorAll(".anchor")];
 const elMap = new Map();
@@ -180,6 +190,9 @@ const observeElSection = (elAnchor, elSection) =>
   intersectionObserver.observe(elSection);
 elAnchorList.forEach(tryAddingToElMap);
 elMap.forEach(observeElSection);
+
+```
+
 ---
 
 ### 프로젝트 후기
