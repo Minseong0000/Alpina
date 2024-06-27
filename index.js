@@ -1,4 +1,4 @@
-//페이지 전환
+/* //페이지 전환
 document.addEventListener("DOMContentLoaded", function () {
   const sections = document.querySelectorAll("section");
   let currentSectionIndex = 0;
@@ -106,10 +106,42 @@ document.addEventListener("DOMContentLoaded", function () {
   sections.forEach((section) => {
     observer.observe(section);
   });
-});
+}); */
+const elSectionList = [...document.querySelectorAll(".section")];
+const elAnchorList = [...document.querySelectorAll(".anchor")];
+const elMap = new Map();
+const tryAddingToElMap = (elAnchor) => {
+  const href = elAnchor.getAttribute("href");
+  const id = href ? href.slice(1) : "";
+  const elSection = elSectionList.find((elSection) => elSection.id === id);
+  if (elSection) elMap.set(elSection, elAnchor);
+};
+const isIntersecting = (entry) => entry.isIntersecting;
+const isNotIntersecting = (entry) => !entry.isIntersecting;
+const activate = (el) => el.classList.add("is-active");
+const activateLinkedAnchor = (entry) => activate(elMap.get(entry.target));
+const deactivate = (el) => el.classList.remove("is-active");
+const deactivateLinkedAnchor = (entry) => deactivate(elMap.get(entry.target));
+const toggleElAnchorActivities = (entries) => {
+  entries.filter(isIntersecting).forEach(activateLinkedAnchor);
+  entries.filter(isNotIntersecting).forEach(deactivateLinkedAnchor);
+};
+const intersectionObserverOptions = {
+  root: document.querySelector(".full-page-scrolling-container") || document,
+  rootMargin: "-50% 0%",
+  threshold: 0,
+};
+const intersectionObserver = new IntersectionObserver(
+  toggleElAnchorActivities,
+  intersectionObserverOptions
+);
+const observeElSection = (elAnchor, elSection) =>
+  intersectionObserver.observe(elSection);
+elAnchorList.forEach(tryAddingToElMap);
+elMap.forEach(observeElSection);
 
 $(".owl-carousel").owlCarousel({
-  loop: true,
+  loop: false,
   margin: 10,
   nav: false,
   dots: true,
@@ -166,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // GSAP
 // 스크롤트리거
-gsap.registerPlugin(ScrollTrigger);
+/* gsap.registerPlugin(ScrollTrigger);
 // .rolled-over-txt
 gsap.utils.toArray(".rolled-over-txt").forEach((txt) => {
   gsap
@@ -191,7 +223,7 @@ gsap.utils.toArray(".rolled-over-txt").forEach((txt) => {
         duration: 5,
       }
     );
-});
+}); */
 // 예약페이지 문구
 function updatePlaceholders() {
   const inputs = document.querySelectorAll(".reserve");
@@ -245,4 +277,21 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   const observer = new IntersectionObserver(observerCallback, observerOptions);
   sections.forEach((section) => observer.observe(section));
+});
+
+// flex 구간
+document.addEventListener("DOMContentLoaded", function () {
+  function toggleClass() {
+    const flex = document.querySelector(".effect");
+    if (window.innerWidth >= 1280) {
+      flex.classList.add("flex-wrap");
+    } else {
+      flex.classList.remove("flex-wrap");
+    }
+  }
+  // Initial check
+  toggleClass();
+
+  // Check on resize
+  window.addEventListener("resize", toggleClass);
 });

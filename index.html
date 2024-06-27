@@ -24,9 +24,9 @@
   <!-- owl carousel -->
   <script src="./assets/scripts/owl.carousel.min.js"></script>
   <!-- gsap js -->
-  <script src="./assets/scripts/gsap.min.js"></script>
+  <!-- <script src="./assets/scripts/gsap.min.js"></script> -->
   <!-- scrolltrigger -->
-  <script src="./assets/scripts/ScrollTrigger.min.js"></script>
+  <!-- <script src="./assets/scripts/ScrollTrigger.min.js"></script> -->
   <!-- index js -->
   <script defer src="./index.js"></script>
 </head>
@@ -54,19 +54,21 @@
   </header>
 
   <!-- ***** header ***** -->
-  <main>
-    <div class="site-menu">
-      <ul class="gnb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Menus</a></li>
-        <li><a href="#">Reservation</a></li>
-        <li><a href="#">Meet the team</a></li>
-        <li><a href="#">More</a></li>
-      </ul>
-    </div>
+  <div class="site-menu">
+    <ul class="gnb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Menus</a></li>
+      <li><a href="#">Reservation</a></li>
+      <li><a href="#">Meet the team</a></li>
+      <li><a href="#">More</a></li>
+    </ul>
+  </div>
 
-    <section class="brand-story">
+  <main class="full-page-scrolling-container">
+
+    <section class="brand-story section" id="section0">
+
       <div class="content-wrap">
         <h3 class="sub-title">SINCE 2023</h3>
         <h2 class="title">ALPINA</h2>
@@ -84,8 +86,8 @@
       </div>
     </section>
 
-    <div class="flex-wrap">
-      <section class="about">
+    <div class="effect">
+      <section class="about section" id="section1">
         <div class="content-wrap">
           <h2 class="title rolled-over-txt">Welcome to Alpina Restaurant</h2>
           <p class="rolled-over-txt">Students in their final term of the Culinary Arts Academy bachelor’s program have a
@@ -97,7 +99,8 @@
             service.</p>
         </div>
       </section>
-      <section class="schedule">
+
+      <section class="schedule section" id="section2">
         <div class="content-wrap">
           <h2>SPRING OPERATION DATES & TIMES</h2>
           <h3 class="date">May 14th - June 6th</h3>
@@ -141,7 +144,7 @@
       </section>
     </div>
 
-    <section class="menu-story">
+    <section class="menu-story section" id="section3">
       <div class="content-wrap">
         <h3 class="sub-title">MENU STORY</h3>
         <p class="title">2 menus means double excitement</p>
@@ -165,7 +168,7 @@
       </div>
     </section>
 
-    <section class="menu">
+    <section class="menu section" id="section4">
       <div class="bg-wrap">
       </div>
       <div class="content-wrap">
@@ -179,7 +182,7 @@
       </div>
     </section>
 
-    <section class="more">
+    <section class="more section" id="section5">
       <div class="content-wrap">
         <div class="text-wrap">
           <h3 class="sub-title">WITH YOU</h3>
@@ -207,7 +210,7 @@
       </div>
     </section>
 
-    <section class="reservation">
+    <section class="reservation section" id="section6">
 
       <div class="content-wrap">
         <h3 class="sub-title">RESERVATION</h3>
@@ -242,6 +245,17 @@
     </section>
 
   </main>
+
+  <!--  <nav class="nav">
+    <ul>
+      <li><a href="#section0" class="anchor"></a></li>
+      <li><a href="#section1" class="anchor"></a></li>
+      <li><a href="#section2" class="anchor"></a></li>
+      <li><a href="#section3" class="anchor"></a></li>
+      <li><a href="#section4" class="anchor"></a></li>
+      <li><a href="#section5" class="anchor"></a></li>
+    </ul>
+  </nav> -->
 
 </body>
 

@@ -532,3 +532,47 @@ main>.flex-wrap {
 #background.visible {
   opacity: 1;
 }
+
+.full-page-scrolling-container {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  width: 100%;
+  height: 100vh;
+}
+
+.section {
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100vh;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.nav {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+}
+
+.anchor {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 10px 0;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.3s;
+}
+
+.anchor:hover,
+.anchor.is-active {
+  transform: scale(1.5);
+}
