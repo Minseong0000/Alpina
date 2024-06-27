@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>title</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+</head>
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
+
+  html,
+  body {
+    font-family: "Lato";
+    padding: 0;
+    margin: 0;
+  }
+
+  .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+  }
+
+  .fixed .navigation {
+    display: table;
+    height: 100vh;
+  }
+
+  .fixed .navigation #nav {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fixed .navigation #nav li {
+    list-style: none;
+    padding: 2vh;
+    margin-left: 3vh;
+    cursor: pointer;
+  }
+
+  .fixed .navigation #nav li .button {
+    display: block;
+    width: 2vh;
+    height: 2vh;
+    border: 0.2vh solid white;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .fixed .navigation #nav li.active .button,
+  .fixed .navigation #nav li:hover .button {
+    background: white;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  #main {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  #main .slide {
+    display: table;
+    width: 100%;
+    height: 100%;
+  }
+
+  #main .slide#first {
+    background: #2980b9;
+  }
+
+  #main .slide#second {
+    background: #c0392b;
+  }
+
+  #main .slide#third {
+    background: #2cc36b;
+  }
+
+  #main .slide .content {
+    display: table-cell;
+    padding: 0 8%;
+    vertical-align: middle;
+  }
+
+  #main .slide .content h1 {
+    padding: 0;
+    margin: 0;
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 10vh;
+    text-shadow: 0.2vh 0.2vh 0.2vh rgba(0, 0, 0, 0.3);
+  }
+</style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<body>
+  <div class="fixed">
+    <div class="navigation">
+      <ul id="nav">
+      </ul>
+    </div>
+  </div>
+  <div id="main">
+    <div class="slide" id="first">
+      <div class="content">
+        <h1>THIS IS SOME TEXT</h1>
+      </div>
+    </div>
+    <div class="slide" id="second">
+      <div class="content">
+        <h1>THIS IS SOME MORE TEXT!</h1>
+      </div>
+    </div>
+    <div class="slide" id="third">
+      <div class="content">
+        <h1>WHY YOU LOOKING AT THIS TEXT?</h1>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      var list = $('.slide');
+      var current = 0;
+
+      var main = $('#main');
+
+      var nav = $('#nav');
+      for (var i = 0; i < list.size(); i++) {
+        if (i == 0) {
+          nav.append('<li id="' + i + '" class="active"><span class="button"></span></li>');
+        } else {
+          nav.append('<li id="' + i + '" class=""><span class="button"></span></li>');
+        }
+      }
+
+      $('#nav li').click(function () {
+        current = $('#nav li').index(this);
+        scroll();
+      });
+      $(window).bind('mousewheel', function (event) {
+        if (event.originalEvent.wheelDelta >= 0) {
+          scroll(-1);
+        } else {
+          scroll(1);
+        }
+      });
+
+      /* Functions */
+      var isScrolling = false;
+      function scroll(dir) {
+        if (isScrolling) {
+          return;
+        }
+        isScrolling = true;
+
+        if (dir == -1) {
+          if (current > 0) {
+            current--;
+          }
+        } else {
+          if (current < list.size() - 1) {
+            current++;
+          }
+        }
+        var number = 100 * current;
+        var value = "translateY(-" + number + "vh)";
+        main.css("transform", value);
+        for (var i = 0; i < list.size(); i++) {
+          $('#nav li:nth-child(' + (i + 1) + ')').removeClass('active');
+        }
+        $('#nav li:nth-child(' + (current + 1) + ')').addClass('active');
+
+        setTimeout(function () {
+          isScrolling = false;
+        }, 500); // -> Here you can modify the time between functions call
+      }
+    });
+  </script>
+</body>
+
+</html>

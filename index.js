@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
       isScrolling = false;
-    }, 600); // Shortened the timeout to improve responsiveness
+    }, 500); // Shortened the timeout to 500ms for better responsiveness
   }
 
   function throttle(func, limit) {
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollToSection(currentSectionIndex - 1);
       }
     }
-  }, 250); // Increased the throttle limit for wheel events
+  }, 150); // Reduced throttle limit to 150ms for wheel events
 
   window.addEventListener("wheel", handleScroll);
 
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollToSection(currentSectionIndex - 1);
       }
     }
-  }, 250); // Consistent throttle timing for key events
+  }, 150); // Consistent throttle timing of 150ms for key events
 
   let startY = 0;
 
@@ -83,22 +83,67 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollToSection(currentSectionIndex - 1);
       }
     }
-  }, 250); // Applied throttle to touch move events
+  }, 150); // Applied consistent throttle timing of 150ms to touch move events
 
   window.addEventListener("touchmove", handleTouchMove);
+
+  // IntersectionObserver to load sections dynamically
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // Stop observing once the section is visible
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
 });
 
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: "auto",
-  spaceBetween: 30,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    type: "bullets",
-    // dynamicBullets: true,
+$(".owl-carousel").owlCarousel({
+  loop: true,
+  margin: 10,
+  nav: false,
+  dots: true,
+  autoplay: false,
+  autoplayTimeout: 1000,
+  stagePadding: 50,
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 1.5,
+    },
+    800: {
+      items: 2,
+    },
+    900: {
+      items: 2.5,
+    },
+    1100: {
+      items: 3,
+    },
+    1280: {
+      items: 2,
+    },
+    1380: {
+      items: 2.5,
+    },
+    1500: {
+      items: 3,
+    },
   },
 });
-// swiper
+// owl carousel
 
 $(function () {
   $(".hamburger-menu").on("click", () => {
@@ -147,7 +192,6 @@ gsap.utils.toArray(".rolled-over-txt").forEach((txt) => {
       }
     );
 });
-
 // 예약페이지 문구
 function updatePlaceholders() {
   const inputs = document.querySelectorAll(".reserve");

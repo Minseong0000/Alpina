@@ -14,8 +14,9 @@
 }
 
 @media (width >=600px) {
-  .swiper-slide {
-    width: 60%;
+
+  .owl-carousel {
+    width: 500px;
   }
 
   .site-menu {
@@ -36,20 +37,21 @@
 }
 
 @media (width >=650px) {
-  .swiper-slide {
-    width: 50%;
+
+  .owl-carousel {
+    width: 550px;
   }
 
   .menu-story .experience {
-    background-image: url(./assets/images/story4.png);
+    background-image: url(./assets/images/story4.webp);
   }
 
   .menu-story .one {
-    background-image: url(./assets/images/story5.png);
+    background-image: url(./assets/images/story5.webp);
   }
 
   .menu-story .two {
-    background-image: url(./assets/images/story6.png);
+    background-image: url(./assets/images/story6.webp);
     margin-bottom: 133px;
   }
 
@@ -101,12 +103,14 @@
 }
 
 @media (width >=800px) {
-  .swiper-slide {
-    width: 40%;
+
+
+  .owl-carousel {
+    width: 700px;
   }
 
   .brand-story {
-    background-image: url(./assets/images/bg6.png);
+    background-image: url(./assets/images/bg6.webp);
   }
 
   .site-menu {
@@ -118,21 +122,28 @@
   }
 }
 
+@media (width >=900px) {
+  .owl-carousel {
+    width: 800px;
+  }
+}
+
 @media (width >=1050px) {
-  .swiper-slide {
-    width: 35%;
+
+  .owl-carousel {
+    width: 950px;
   }
 
   .menu-story .experience {
-    background-image: url(./assets/images/story7.png);
+    background-image: url(./assets/images/story7.webp);
   }
 
   .menu-story .one {
-    background-image: url(./assets/images/story8.png);
+    background-image: url(./assets/images/story8.webp);
   }
 
   .menu-story .two {
-    background-image: url(./assets/images/story9.png);
+    background-image: url(./assets/images/story9.webp);
     margin-bottom: 133px;
   }
 
@@ -152,6 +163,10 @@
 @media (width >=1280px) {
   .site-menu {
     padding-top: 10%;
+  }
+
+  .owl-carousel {
+    width: 700px;
   }
 
   .header-wrap h1 a .logo {
@@ -186,6 +201,17 @@
   }
 
   /* header & global */
+  .schedule h2,
+  .schedule h3,
+  .open,
+  .close {
+    width: 100%;
+  }
+
+  .schedule .content-wrap>p {
+    width: 100%;
+  }
+
   .brand-story #button-1 {
     overflow: hidden;
     -webkit-transition: all 0.3s ease-in-out;
@@ -321,7 +347,7 @@
   }
 
   .menu-story .experience {
-    background-image: url(./assets/images/story10.png);
+    background-image: url(./assets/images/story10.webp);
     /* opacity: 0.8; */
   }
 
@@ -334,7 +360,7 @@
   }
 
   .menu-story .one {
-    background-image: url(./assets/images/story11.png);
+    background-image: url(./assets/images/story11.webp);
     /* opacity: 0.8; */
   }
 
@@ -343,7 +369,7 @@
   }
 
   .menu-story .two {
-    background-image: url(./assets/images/story12.png);
+    background-image: url(./assets/images/story12.webp);
     /* opacity: 0.8; */
     margin-bottom: 133px;
   }
@@ -379,7 +405,7 @@
   }
 
   .menu .bg-wrap {
-    background-image: url(./assets/images/bg8.png);
+    background-image: url(./assets/images/bg8.webp);
     object-fit: cover;
     background-size: cover;
     background-repeat: no-repeat;
@@ -515,7 +541,7 @@
 
   /* more */
   .reservation {
-    background-image: url(./assets/images/bg9.png);
+    background-image: url(./assets/images/bg9.webp);
   }
 
   .reservation .content-wrap {
@@ -654,6 +680,10 @@
   .more .content-wrap {
     width: 85%;
   }
+
+  .owl-carousel {
+    width: 800px;
+  }
 }
 
 @media (width >=1500px) {
@@ -689,6 +719,10 @@
     padding-left: 5%;
     transform: translate(30px, -20px);
   }
+
+  .owl-carousel {
+    width: 900px;
+  }
 }
 
 @media (width >=1556px) {
@@ -697,4 +731,22 @@
   }
 
 
+}
+
+@media (width >=1650px) {
+  .owl-carousel {
+    width: 1000px;
+  }
+}
+
+@media (width >=1750px) {
+  .owl-carousel {
+    width: 1100px;
+  }
+}
+
+@media (width >=1850px) {
+  .owl-carousel {
+    width: 1200px;
+  }
 }
