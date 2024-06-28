@@ -19,19 +19,18 @@
   <!-- pc css -->
   <link rel="stylesheet" href="./pc-index.css">
 
-
-
   <!-- jquery script -->
   <script src="./assets/scripts/jquery-3.7.1.min.js"></script>
   <!-- owl carousel -->
   <script src="./assets/scripts/owl.carousel.min.js"></script>
   <!-- gsap js -->
-  <script src="./assets/scripts/gsap.min.js"></script>
+  <!-- <script src="./assets/scripts/gsap.min.js"></script> -->
   <!-- scrolltrigger -->
-  <script src="./assets/scripts/ScrollTrigger.min.js"></script>
-  <!-- fullpage -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!-- <script src="./assets/scripts/ScrollTrigger.min.js"></script> -->
   <!-- index js -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
   <script defer src="./index.js"></script>
 </head>
 
@@ -58,203 +57,196 @@
   </header>
 
   <!-- ***** header ***** -->
-  <main>
-    <div class="site-menu">
-      <ul class="gnb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Menus</a></li>
-        <li><a href="#">Reservation</a></li>
-        <li><a href="#">Meet the team</a></li>
-        <li><a href="#">More</a></li>
-      </ul>
-    </div>
+  <div class="site-menu">
+    <ul class="gnb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Menus</a></li>
+      <li><a href="#">Reservation</a></li>
+      <li><a href="#">Meet the team</a></li>
+      <li><a href="#">More</a></li>
+    </ul>
+  </div>
 
-    <div id="main">
-      <div class="fixed">
-        <div class="navigation">
-          <ul id="nav">
-          </ul>
+  <main class="full-page-scrolling-container">
+
+    <section class="brand-story section" id="section0">
+
+      <div class="content-wrap">
+        <h3 class="sub-title">SINCE 2023</h3>
+        <h2 class="title">ALPINA</h2>
+        <div class="line-wrap">
+          <i class="line vertical"></i>
+        </div>
+        <p class="des">Pop-up restaurant<br>by Culinary Arts Academy</p>
+        <div class="btn-container">
+          <a href="#" class="btn" id="button-1">BRAND STORY</a>
         </div>
       </div>
-
-      <section class="brand-story slide" id="first">
-        <div class="content-wrap">
-          <h3 class="sub-title">SINCE 2023</h3>
-          <h2 class="title">ALPINA</h2>
-          <div class="line-wrap">
-            <i class="line vertical"></i>
-          </div>
-          <p class="des">Pop-up restaurant<br>by Culinary Arts Academy</p>
-          <div class="btn-container">
-            <a href="#" class="btn" id="button-1">BRAND STORY</a>
-          </div>
-        </div>
-        <div class="quick-wrap flex-wrap">
-          <p>Reserve</p>
-          <p>Location</p>
-        </div>
-      </section>
-
-      <div class="flex-wrap">
-        <section class="about slide" id="second">
-          <div class="content-wrap">
-            <h2 class="title rolled-over-txt">Welcome to Alpina Restaurant</h2>
-            <p class="rolled-over-txt">Students in their final term of the Culinary Arts Academy bachelor’s program have
-              a
-              one-of-a-kind opportunity
-              to run their own restaurant and to showcase their abilities in a real-life environment.</p>
-            <p class="rolled-over-txt">While the kitchen team is proposing their very own menu featuring local
-              ingredients
-              with an international
-              twist, the service team aims to accompany the guests’ culinary experience with a welcoming and attentive
-              service.</p>
-          </div>
-        </section>
-        <section class="schedule slide" id="third">
-          <div class="content-wrap">
-            <h2>SPRING OPERATION DATES & TIMES</h2>
-            <h3 class="date">May 14th - June 6th</h3>
-            <div class="open flex-wrap">
-              <p>Tuesday - Friday</p>
-              <p>11:30 - 14:00</p>
-            </div>
-            <div class="close flex-wrap">
-              <p>Saturday - Monday</p>
-              <p>Closed</p>
-            </div>
-            <h3 class="date">June 12th & 13th</h3>
-            <div class="open flex-wrap">
-              <p>Gala Dinner</p>
-              <p>18:00 - 21:00</p>
-            </div>
-            <p>*4 Course Special Set Menu <br> Booking in advance is recommended</p>
-
-            <div class="owl-carousel owl-theme">
-              <div class="item">
-                <img src="./assets/images/gallery1.webp">
-                <p>Grilled Octopus</p>
-              </div>
-              <div class="item">
-                <img src="./assets/images/gallery2.webp">
-                <p>Pilaf Rice</p>
-              </div>
-              <div class="item">
-                <img src="./assets/images/gallery3.webp">
-                <p>Poke</p>
-              </div>
-              <div class="item">
-                <img src="./assets/images/gallery4.webp">
-                <p>Souvide Cod</p>
-              </div>
-            </div>
-            <div class="btn-container">
-              <a href="#" class="btn" id="button-2">BOOK YOUR TABLE</a>
-            </div>
-          </div>
-        </section>
+      <div class="quick-wrap flex-wrap">
+        <p>Reserve</p>
+        <p>Location</p>
       </div>
+    </section>
 
-      <section class="menu-story slide" id="fourth">
+    <div class="effect">
+      <section class="about section" id="section1">
         <div class="content-wrap">
-          <h3 class="sub-title">MENU STORY</h3>
-          <p class="title">2 menus means double excitement</p>
-          <div class="flex-wrap">
-            <div class="information experience">
-              <div class="layer-black"></div>
-              <p class="des">2 TOTALLY DIFFERENT <br>EXPERIENCES</p>
-              <i class="plus-btn"></i>
-            </div>
-            <div class="information type one">
-              <div class="layer-black"></div>
-              <p class="des">TUESDAY<br>WEDNESDAY</p>
-              <i class="plus-btn"></i>
-            </div>
-            <div class="information type two">
-              <div class="layer-black"></div>
-              <p class="des">THURSDAY<br>FRIDAY</p>
-              <i class="plus-btn"></i>
-            </div>
-          </div>
+          <h2 class="title rolled-over-txt">Welcome to Alpina Restaurant</h2>
+          <p class="rolled-over-txt">Students in their final term of the Culinary Arts Academy bachelor’s program have a
+            one-of-a-kind opportunity
+            to run their own restaurant and to showcase their abilities in a real-life environment.</p>
+          <p class="rolled-over-txt">While the kitchen team is proposing their very own menu featuring local ingredients
+            with an international
+            twist, the service team aims to accompany the guests’ culinary experience with a welcoming and attentive
+            service.</p>
         </div>
       </section>
 
-      <section class="menu slide" id="fifth">
-        <div class="bg-wrap">
-        </div>
+      <section class="schedule section" id="section2">
         <div class="content-wrap">
-          <h3 class="sub-title">2/3 COURSE MEAL</h3>
-          <h2 class="title">FISH/MEAT <br>OR <br>VEGETARIAN</h2>
-          <i class="line horizontal"></i>
-          <p class="des">2 COURSE MEAL DOES NOT INCLUDE DESSERT</p>
+          <h2>SPRING OPERATION DATES & TIMES</h2>
+          <h3 class="date">May 14th - June 6th</h3>
+          <div class="open flex-wrap">
+            <p>Tuesday - Friday</p>
+            <p>11:30 - 14:00</p>
+          </div>
+          <div class="close flex-wrap">
+            <p>Saturday - Monday</p>
+            <p>Closed</p>
+          </div>
+          <h3 class="date">June 12th & 13th</h3>
+          <div class="open flex-wrap">
+            <p>Gala Dinner</p>
+            <p>18:00 - 21:00</p>
+          </div>
+          <p>*4 Course Special Set Menu <br> Booking in advance is recommended</p>
+
+          <div class="owl-carousel owl-theme">
+            <div class="item">
+              <img src="./assets/images/gallery1.webp">
+              <p>Grilled Octopus</p>
+            </div>
+            <div class="item">
+              <img src="./assets/images/gallery2.webp">
+              <p>Pilaf Rice</p>
+            </div>
+            <div class="item">
+              <img src="./assets/images/gallery3.webp">
+              <p>Poke</p>
+            </div>
+            <div class="item">
+              <img src="./assets/images/gallery4.webp">
+              <p>Souvide Cod</p>
+            </div>
+          </div>
           <div class="btn-container">
-            <a href="#" class="btn" id="button-3">MENU</a>
+            <a href="#" class="btn" id="button-2">BOOK YOUR TABLE</a>
           </div>
         </div>
-      </section>
-
-      <section class="more slide" id="seventh">
-        <div class="content-wrap">
-          <div class="text-wrap">
-            <h3 class="sub-title">WITH YOU</h3>
-            <h2 class="title">EXPERIENCE OUR <br> UNIQUE SERVICE</h2>
-            <i class="line horizontal"></i>
-            <p class="des">CHECK OUR OPENING SCHEDULES</p>
-            <div class="btn-container">
-              <a href="#" class="btn" id="button-4">MORE</a>
-            </div>
-          </div>
-          <div class="food flex-wrap">
-            <div class="img">
-              <img src="./assets/images/food1.webp" alt="음식사진">
-            </div>
-            <div class="img">
-              <img src="./assets/images/food2.webp" alt="음식사진">
-            </div>
-            <div class="img">
-              <img src="./assets/images/food3.webp" alt="음식사진">
-            </div>
-            <div class="img">
-              <img src="./assets/images/food4.webp" alt="음식사진">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="reservation slide" id="eighth">
-
-        <div class="content-wrap">
-          <h3 class="sub-title">RESERVATION</h3>
-          <h2 class="title">BOOK YOUR <br> TABLE HERE</h2>
-          <i class="line horizontal"></i>
-          <p>
-            <span>Email:</span>restaurant.alpina@cesarritzcolleges.ch
-          </p>
-          <div class="book flex-wrap">
-            <div class="container">
-              <p>Name & Surname</p>
-              <input type="text" placeholder="Name & Surname" class="reserve">
-            </div>
-            <div class="container">
-              <p>Date,Time & No. of Guests</p>
-              <input type="text" placeholder="Date,Time & No. of Guests" class="reserve">
-            </div>
-            <div class="container">
-              <p>Email</p>
-              <input type="text" placeholder="Email" class="reserve">
-            </div>
-            <p>Message</p>
-            <input type="text" placeholder="Message" class="reserve">
-          </div>
-          <div class="btn-wrap">
-            <div class="btn-container">
-              <a href="#" class="btn" id="button-5">SEND</a>
-            </div>
-          </div>
-        </div>
-        <div class="layer"></div>
       </section>
     </div>
+
+    <section class="menu-story section" id="section3">
+      <div class="content-wrap">
+        <h3 class="sub-title">MENU STORY</h3>
+        <p class="title">2 menus means double excitement</p>
+        <div class="flex-wrap">
+          <div class="information experience">
+            <div class="layer-black"></div>
+            <p class="des">2 TOTALLY DIFFERENT <br>EXPERIENCES</p>
+            <i class="plus-btn"></i>
+          </div>
+          <div class="information type one">
+            <div class="layer-black"></div>
+            <p class="des">TUESDAY<br>WEDNESDAY</p>
+            <i class="plus-btn"></i>
+          </div>
+          <div class="information type two">
+            <div class="layer-black"></div>
+            <p class="des">THURSDAY<br>FRIDAY</p>
+            <i class="plus-btn"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu section" id="section4">
+      <div class="bg-wrap">
+      </div>
+      <div class="content-wrap">
+        <h3 class="sub-title">2/3 COURSE MEAL</h3>
+        <h2 class="title">FISH/MEAT <br>OR <br>VEGETARIAN</h2>
+        <i class="line horizontal"></i>
+        <p class="des">2 COURSE MEAL DOES NOT INCLUDE DESSERT</p>
+        <div class="btn-container">
+          <a href="#" class="btn" id="button-3">MENU</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="more section" id="section5">
+      <div class="content-wrap">
+        <div class="text-wrap">
+          <h3 class="sub-title">WITH YOU</h3>
+          <h2 class="title">EXPERIENCE OUR <br> UNIQUE SERVICE</h2>
+          <i class="line horizontal"></i>
+          <p class="des">CHECK OUR OPENING SCHEDULES</p>
+          <div class="btn-container">
+            <a href="#" class="btn" id="button-4">MORE</a>
+          </div>
+        </div>
+        <div class="food flex-wrap">
+          <div class="img">
+            <img src="./assets/images/food1.webp" alt="음식사진">
+          </div>
+          <div class="img">
+            <img src="./assets/images/food2.webp" alt="음식사진">
+          </div>
+          <div class="img">
+            <img src="./assets/images/food3.webp" alt="음식사진">
+          </div>
+          <div class="img">
+            <img src="./assets/images/food4.webp" alt="음식사진">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reservation section" id="section6">
+
+      <div class="content-wrap">
+        <h3 class="sub-title">RESERVATION</h3>
+        <h2 class="title">BOOK YOUR <br> TABLE HERE</h2>
+        <i class="line horizontal"></i>
+        <p>
+          <span>Email:</span>restaurant.alpina@cesarritzcolleges.ch
+        </p>
+        <div class="book flex-wrap">
+          <div class="container">
+            <p>Name & Surname</p>
+            <input type="text" placeholder="Name & Surname" class="reserve">
+          </div>
+          <div class="container">
+            <p>Date,Time & No. of Guests</p>
+            <input type="text" placeholder="Date,Time & No. of Guests" class="reserve">
+          </div>
+          <div class="container">
+            <p>Email</p>
+            <input type="text" placeholder="Email" class="reserve">
+          </div>
+          <p>Message</p>
+          <input type="text" placeholder="Message" class="reserve">
+        </div>
+        <div class="btn-wrap">
+          <div class="btn-container">
+            <a href="#" class="btn" id="button-5">SEND</a>
+          </div>
+        </div>
+      </div>
+      <div class="layer"></div>
+    </section>
+
   </main>
 
 </body>

@@ -555,7 +555,7 @@ main>.flex-wrap {
   height: 100%;
 }
 
-.nav {
+/* .nav {
   position: fixed;
   top: 50%;
   right: 30px;
@@ -575,4 +575,4 @@ main>.flex-wrap {
 .anchor:hover,
 .anchor.is-active {
   transform: scale(1.5);
-}
+} */
