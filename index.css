@@ -28,7 +28,7 @@
 }
 
 .site-menu .gnb li a {
-  padding: 25px 0;
+  padding: 15px 0;
   display: block;
 }
 
@@ -291,7 +291,7 @@ main>.flex-wrap {
 }
 
 .owl-carousel {
-  width: 400px;
+  width: 80vw;
 }
 
 .owl-carousel .item {
@@ -319,6 +319,7 @@ main>.flex-wrap {
   position: absolute;
   justify-content: flex-end;
 }
+
 
 /* schedule */
 
@@ -543,7 +544,7 @@ main>.flex-wrap {
 
 .section {
   scroll-snap-align: start;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 }
 

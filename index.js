@@ -1,29 +1,29 @@
-//페이지전환
+//페이지 넘김
 const elSectionList = [...document.querySelectorAll(".section")];
 let isScrolling = false;
-
-const isIntersecting = (entry) => entry.isIntersecting;
-const isNotIntersecting = (entry) => !entry.isIntersecting;
+let currentSectionIndex = 0;
 
 const activate = (el) => {
   el.classList.add("is-active");
-  el.style.opacity = "1"; // Make it fully opaque
 };
 
 const deactivate = (el) => {
   el.classList.remove("is-active");
-  el.style.opacity = "0.5"; // Reduce opacity
 };
 
 const toggleSectionActivities = (entries) => {
-  entries.filter(isIntersecting).forEach((entry) => activate(entry.target));
-  entries
-    .filter(isNotIntersecting)
-    .forEach((entry) => deactivate(entry.target));
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      activate(entry.target);
+      currentSectionIndex = elSectionList.indexOf(entry.target);
+    } else {
+      deactivate(entry.target);
+    }
+  });
 };
 
 const intersectionObserverOptions = {
-  root: document.querySelector(".full-page-scrolling-container") || document,
+  root: document.querySelector(".full-page-scrolling-container") || null,
   rootMargin: "-50% 0%",
   threshold: 0,
 };
@@ -33,37 +33,61 @@ const intersectionObserver = new IntersectionObserver(
   intersectionObserverOptions
 );
 
-elSectionList.forEach((section) => intersectionObserver.observe(section));
+// 1280px 이상일땐 3번째 섹션 무시 [flex로 1개 섹션 감소]
+const observeSections = () => {
+  intersectionObserver.disconnect(); // 기존 관찰 중인 섹션을 모두 해제
+  elSectionList.forEach((section, index) => {
+    if (window.innerWidth < 1280 || index !== 2) {
+      intersectionObserver.observe(section);
+    }
+  });
+};
+
+observeSections();
 
 const scrollToSection = (sectionIndex) => {
   const section = elSectionList[sectionIndex];
   if (section) {
-    window.scrollTo({
-      top: section.offsetTop,
+    section.scrollIntoView({
       behavior: "smooth",
+      block: "start",
     });
   }
 };
 
 const handleScroll = (event) => {
+  event.preventDefault(); // 디폴트값 방지
+
   if (isScrolling) return;
   isScrolling = true;
 
-  const currentSectionIndex = elSectionList.findIndex((section) =>
-    section.classList.contains("is-active")
-  );
-  if (event.deltaY > 0 && currentSectionIndex < elSectionList.length - 1) {
-    scrollToSection(currentSectionIndex + 1);
-  } else if (event.deltaY < 0 && currentSectionIndex > 0) {
-    scrollToSection(currentSectionIndex - 1);
+  const delta = Math.sign(event.deltaY);
+  let nextSectionIndex = currentSectionIndex + delta;
+
+  // 3번째 섹션 스킵(1280px이상일시)
+  if (window.innerWidth >= 1280) {
+    if (nextSectionIndex === 2) {
+      nextSectionIndex += delta > 0 ? 1 : -1;
+    }
   }
 
+  if (nextSectionIndex >= 0 && nextSectionIndex < elSectionList.length) {
+    // 다음 페이지로 스크롤
+    scrollToSection(nextSectionIndex);
+  }
+
+  // 리셋
   setTimeout(() => {
     isScrolling = false;
-  }, 1500); // Set this time to match the scroll behavior
+  }, 1000); // 부드러운 움직임을 위해 1초 시간 딜레이
 };
 
 window.addEventListener("wheel", handleScroll, { passive: false });
+
+// 페이지 새로고침을 트리거하는 리사이즈 이벤트 핸들러
+window.addEventListener("resize", () => {
+  location.reload();
+});
 
 //slider
 $(".owl-carousel").owlCarousel({
@@ -73,12 +97,8 @@ $(".owl-carousel").owlCarousel({
   dots: true,
   autoplay: false,
   autoplayTimeout: 1000,
-  stagePadding: 50,
   responsive: {
     0: {
-      items: 1,
-    },
-    600: {
       items: 1.5,
     },
     800: {
@@ -120,36 +140,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 5000); // 5초 후에 클래스 제거
 });
 
-// 페이지로드시 레이어
-
-// GSAP
-// 스크롤트리거
-/* gsap.registerPlugin(ScrollTrigger);
-// .rolled-over-txt
-gsap.utils.toArray(".rolled-over-txt").forEach((txt) => {
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".about",
-        start: "100% 100%",
-        end: "100% 100%",
-        scrub: 1,
-      },
-    })
-    .fromTo(
-      txt,
-      {
-        y: 100,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        ease: "none",
-        duration: 5,
-      }
-    );
-}); */
 // 예약페이지 문구
 function updatePlaceholders() {
   const inputs = document.querySelectorAll(".reserve");
@@ -172,11 +162,6 @@ updatePlaceholders();
 
 // 윈도우 크기 변경시 실행
 window.addEventListener("resize", updatePlaceholders);
-
-// 높이값 확인
-/* var section = document.querySelector(".menu-story");
-var sectionHeight = section.offsetHeight;
-console.log(sectionHeight); */
 
 document.addEventListener("DOMContentLoaded", (event) => {
   const sections = document.querySelectorAll("section");

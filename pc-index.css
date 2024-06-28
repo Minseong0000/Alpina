@@ -165,6 +165,10 @@
     padding-top: 10%;
   }
 
+  .site-menu .gnb li a {
+    padding: 25px 0;
+  }
+
   .owl-carousel {
     width: 700px;
   }

@@ -11,20 +11,9 @@
 
 
   /* colors */
-  --color-gray-10: #FAFAFA;
-  --color-gray-20: #9F9F9F;
-  --color-gray-30: #777777;
-  --color-gray-40: #EEEDED;
-  --color-lightblue: #EDF2F3;
   --color-white: #fff;
-  --color-black: #000;
+  --color-black: #282828;
   --color-red: #FF6565;
-  --color-pink: #FF64F9;
-  --color-purple: #6B5FFF;
-  --color-blue: #4D8AFF;
-  --color-green: #5BFF89;
-  --color-yellow: #FFEE55;
-  --color-orange: #FF6D1B;
 
   /* font-size */
   --font-xxl: 44px;
