@@ -21,10 +21,28 @@
 
 ---
 
-### 2. 프로젝트를 하며 느낀 점
+### 2. 디자인 가이드 라인
 
-- 디자인의 일관성을 살리면서 전달하고자하는 내용을 전부 온전히 전달하는것은 쉽지 않은걸 느꼈다.
-- 단순 코드의 순서가 웹페이지에 렉을 유발할 수 있다는 것을 알게 되었다.
+## KEYWORD
+#열정
+
+#진중
+
+#깔끔
+
+## COLOR PALETTE
+
+무색이 주는 클래식함에 빨간 포인트 컬러로 열정을 담아내고자 했습니다.
+
+![Group 19 (1)](https://github.com/Minseong0000/Alpina/assets/160007497/87376fa3-094d-4fa2-8bf3-ed584d1ea134)
+
+## TYPOGRAPHY
+
+![Group 20](https://github.com/Minseong0000/Alpina/assets/160007497/53bca059-ca1f-4d15-9de0-7962b20ecace)
+
+## STYLE
+
+![Group 24](https://github.com/Minseong0000/Alpina/assets/160007497/da80a1b4-927c-4f4c-84e0-f27b10c90473)
 
 ---
 
@@ -34,7 +52,156 @@
 
 ---
 
-### 4. 문제 & 해결
+### 4. 퍼블리싱 
+
+- SLIDER
+  
+  owl carousel을 사용하여 구현
+
+```
+$(".owl-carousel").owlCarousel({
+  loop: false,
+  margin: 10,
+  nav: false,
+  dots: true,
+  autoplay: false,
+  autoplayTimeout: 1000,
+  responsive: {
+    0: {
+      items: 1.5,
+    },
+    800: {
+      items: 2,
+    },
+    900: {
+      items: 2.5,
+    },
+    1100: {
+      items: 3,
+    },
+    1280: {
+      items: 2,
+    },
+    1380: {
+      items: 2.5,
+    },
+    1500: {
+      items: 3,
+    },
+  },
+});
+
+```
+  
+- FULL PAGE SCROLL ANIMATION
+  
+  scrollTo()메서드, setTimeout()메서드, intersectionObserver 등으로 페이지 스크롤, 페이지 전환후 딜레이, 변환효과등을 구현
+   
+```
+const elSectionList = [...document.querySelectorAll(".section")];
+let isScrolling = false;
+let currentSectionIndex = 0;
+
+const activate = (el) => {
+  el.classList.add("is-active");
+};
+
+const deactivate = (el) => {
+  el.classList.remove("is-active");
+};
+
+const toggleSectionActivities = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      activate(entry.target);
+      currentSectionIndex = elSectionList.indexOf(entry.target);
+    } else {
+      deactivate(entry.target);
+    }
+  });
+};
+
+const intersectionObserverOptions = {
+  root: document.querySelector(".full-page-scrolling-container") || null,
+  rootMargin: "-50% 0%",
+  threshold: 0,
+};
+
+const intersectionObserver = new IntersectionObserver(
+  toggleSectionActivities,
+  intersectionObserverOptions
+);
+
+// 1280px 이상일땐 3번째 섹션 무시 [flex로 1개 섹션 감소]
+const observeSections = () => {
+  intersectionObserver.disconnect(); // 기존 관찰 중인 섹션을 모두 해제
+  elSectionList.forEach((section, index) => {
+    if (window.innerWidth < 1280 || index !== 2) {
+      intersectionObserver.observe(section);
+    }
+  });
+};
+
+observeSections();
+
+const scrollToSection = (sectionIndex) => {
+  const section = elSectionList[sectionIndex];
+  if (section) {
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
+
+const handleScroll = (event) => {
+  event.preventDefault(); // 디폴트값 방지
+
+  if (isScrolling) return;
+  isScrolling = true;
+
+  const delta = Math.sign(event.deltaY);
+  let nextSectionIndex = currentSectionIndex + delta;
+
+  // 3번째 섹션 스킵(1280px이상일시)
+  if (window.innerWidth >= 1280) {
+    if (nextSectionIndex === 2) {
+      nextSectionIndex += delta > 0 ? 1 : -1;
+    }
+  }
+
+  if (nextSectionIndex >= 0 && nextSectionIndex < elSectionList.length) {
+    // 다음 페이지로 스크롤
+    scrollToSection(nextSectionIndex);
+  }
+
+  // 리셋 
+  setTimeout(() => {
+    isScrolling = false;
+  }, 1000); // 부드러운 움직임을 위해 1초 시간 딜레이
+};
+
+window.addEventListener("wheel", handleScroll, { passive: false });
+
+// 페이지 새로고침을 트리거하는 리사이즈 이벤트 핸들러
+window.addEventListener("resize", () => {
+  location.reload();
+});
+
+```
+
+- BREAK POINT
+
+  Media query를 활용하여 width/height 값에 따라 변동된 수치 적용
+
+```
+@media (width >=600px){}, @media (width >=1280px){}, 등
+
+```
+
+---
+
+### 5. 문제 & 해결
 
 - 문제1. 컨텐츠 요소들에 여백값을 px로 주지 않았을 때, 브라우저 높이값에 따라, 컨텐츠가 완전히 무너짐
 
@@ -62,167 +229,6 @@
 
   해결6-2. 스크립트를 바꿈
 
-
-**BEFORE[비정상페이지]**
-
-![컨텐츠미표기](https://github.com/Minseong0000/Alpina/assets/160007497/20c5ff80-b8fd-4d60-a3b9-7989c69725f7)
-
-```
-      
-document.addEventListener("DOMContentLoaded", function () {
-  const sections = document.querySelectorAll("section");
-  let currentSectionIndex = 0;
-  let isScrolling = false;
-  let scrollTimeout;
-
-  function scrollToSection(index) {
-    if (index >= 0 && index < sections.length) {
-      sections[index].scrollIntoView({ behavior: "smooth" });
-      currentSectionIndex = index;
-      setIsScrolling();
-    }
-  }
-
-  function setIsScrolling() {
-    isScrolling = true;
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      isScrolling = false;
-    }, 500); // Shortened the timeout to 500ms for better responsiveness
-  }
-
-  function throttle(func, limit) {
-    let lastFunc;
-    let lastRan;
-    return function () {
-      const context = this;
-      const args = arguments;
-      if (!lastRan) {
-        func.apply(context, args);
-        lastRan = Date.now();
-      } else {
-        clearTimeout(lastFunc);
-        lastFunc = setTimeout(function () {
-          if (Date.now() - lastRan >= limit) {
-            func.apply(context, args);
-            lastRan = Date.now();
-          }
-        }, limit - (Date.now() - lastRan));
-      }
-    };
-  }
-
-  const handleScroll = throttle((event) => {
-    if (!isScrolling) {
-      if (event.deltaY > 0 && currentSectionIndex < sections.length - 1) {
-        scrollToSection(currentSectionIndex + 1);
-      } else if (event.deltaY < 0 && currentSectionIndex > 0) {
-        scrollToSection(currentSectionIndex - 1);
-      }
-    }
-  }, 150); // Reduced throttle limit to 150ms for wheel events
-
-  window.addEventListener("wheel", handleScroll);
-
-  const handleKeyDown = throttle((event) => {
-    if (!isScrolling) {
-      if (
-        event.key === "ArrowDown" &&
-        currentSectionIndex < sections.length - 1
-      ) {
-        scrollToSection(currentSectionIndex + 1);
-      } else if (event.key === "ArrowUp" && currentSectionIndex > 0) {
-        scrollToSection(currentSectionIndex - 1);
-      }
-    }
-  }, 150); // Consistent throttle timing of 150ms for key events
-
-  let startY = 0;
-
-  window.addEventListener("touchstart", (event) => {
-    startY = event.touches[0].clientY;
-  });
-
-  const handleTouchMove = throttle((event) => {
-    if (!isScrolling) {
-      const endY = event.touches[0].clientY;
-      const deltaY = startY - endY;
-      if (deltaY > 50 && currentSectionIndex < sections.length - 1) {
-        scrollToSection(currentSectionIndex + 1);
-      } else if (deltaY < -50 && currentSectionIndex > 0) {
-        scrollToSection(currentSectionIndex - 1);
-      }
-    }
-  }, 150); // Applied consistent throttle timing of 150ms to touch move events
-
-  window.addEventListener("touchmove", handleTouchMove);
-
-  // IntersectionObserver to load sections dynamically
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.1,
-  };
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target); // Stop observing once the section is visible
-      }
-    });
-  }, observerOptions);
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-});
-
-```
-
-
-**AFTER[정상페이지]**
-
-![정상컨텐츠](https://github.com/Minseong0000/Alpina/assets/160007497/7a3459c7-d6c1-459b-ab4f-8a6d81706f98)
-
-
-```
-
-const elSectionList = [...document.querySelectorAll(".section")];
-const elAnchorList = [...document.querySelectorAll(".anchor")];
-const elMap = new Map();
-const tryAddingToElMap = (elAnchor) => {
-  const href = elAnchor.getAttribute("href");
-  const id = href ? href.slice(1) : "";
-  const elSection = elSectionList.find((elSection) => elSection.id === id);
-  if (elSection) elMap.set(elSection, elAnchor);
-};
-const isIntersecting = (entry) => entry.isIntersecting;
-const isNotIntersecting = (entry) => !entry.isIntersecting;
-const activate = (el) => el.classList.add("is-active");
-const activateLinkedAnchor = (entry) => activate(elMap.get(entry.target));
-const deactivate = (el) => el.classList.remove("is-active");
-const deactivateLinkedAnchor = (entry) => deactivate(elMap.get(entry.target));
-const toggleElAnchorActivities = (entries) => {
-  entries.filter(isIntersecting).forEach(activateLinkedAnchor);
-  entries.filter(isNotIntersecting).forEach(deactivateLinkedAnchor);
-};
-const intersectionObserverOptions = {
-  root: document.querySelector(".full-page-scrolling-container") || document,
-  rootMargin: "-50% 0%",
-  threshold: 0,
-};
-const intersectionObserver = new IntersectionObserver(
-  toggleElAnchorActivities,
-  intersectionObserverOptions
-);
-const observeElSection = (elAnchor, elSection) =>
-  intersectionObserver.observe(elSection);
-elAnchorList.forEach(tryAddingToElMap);
-elMap.forEach(observeElSection);
-
-```
-
 ---
 
 ### 프로젝트 후기
@@ -231,7 +237,7 @@ elMap.forEach(observeElSection);
 
 이번 프로젝트를 통하여 전적으로 맡아 해본적 없는 디자인을 처음부터 끝까지 진행하며, 
 여러가지 스타일(여백, 행간, 등)들이 일관성이 없으면 퍼블리싱을 할 때 어느 부분에서 문제가 되는지,
-그리고 디자인적 시선에서 얼마나 어색한지 배웠다. 
+그리고 디자인이 내용 전달에 주는 도움이 엄청 크다는 것을 알게 되었다.
 
 <a href="https://minseong0000.github.io/Alpina/" target="_blank">프로젝트 바로가기</a>
 
