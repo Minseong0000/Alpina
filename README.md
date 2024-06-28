@@ -1,4 +1,4 @@
-## Alpina restaurant(Brig,switzerland) 홈페이지 리디자인 및 퍼블리싱
+## Alpina restaurant(Brig,Switzerland) 홈페이지 리디자인 및 퍼블리싱
 
 ### 0.Alpina restaurant 홈페이지
 
