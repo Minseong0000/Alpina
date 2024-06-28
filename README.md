@@ -241,3 +241,5 @@ window.addEventListener("resize", () => {
 
 <a href="https://minseong0000.github.io/Alpina/" target="_blank">프로젝트 바로가기</a>
 
+<a href="https://www.figma.com/design/q22w4WaR3I01i5d6YJtuYD/Alpina?node-id=117-70&t=Iu8UUZuKPITRKp9o-0" target="_blank">피그마 바로가기</a>
+
