@@ -2,7 +2,7 @@
 
 ### 0.Alpina restaurant 홈페이지
 
-사용기술: JavaScript, GSAP, jQuery, Owl carousel
+사용기술: JavaScript, jQuery, Owl carousel
 
 작업기간: 2024.06.18 ~ 2024. 06.26
 
